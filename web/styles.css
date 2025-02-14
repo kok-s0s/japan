@@ -1,0 +1,80 @@
+/* 容器居中 */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212; /* 背景颜色 */
+}
+
+/* 卡片样式 */
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  width: 400px;
+}
+
+/* 左右按钮的样式 */
+.nav-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: #8a66d3; /* 紫蓝色 */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* 左按钮（三角形） */
+.nav-button.left {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 18px solid #8a66d3; /* 紫蓝色 */
+}
+
+/* 右按钮（三角形） */
+.nav-button.right {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 18px solid #8a66d3; /* 紫蓝色 */
+}
+
+/* 鼠标悬停时按钮动画 */
+.nav-button:hover {
+  transform: scale(1.1);
+}
+
+/* 卡片内容 */
+.card-content {
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* 每一行的样式 */
+.row {
+  margin: 10px 0;
+}
+
+#japanese {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+#kana {
+  font-size: 20px;
+  font-weight: bold;
+  color: #aaa;
+}
+
+#chinese,
+#romaji {
+  font-size: 16px;
+  color: #ddd;
+}
