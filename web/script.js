@@ -5,7 +5,7 @@ let currentIndex = 0; // 当前显示的单词索引
 // 读取 CSV 文件并解析
 const loadCSVData = async () => {
   try {
-    const response = await fetch("../tasks/words/vocab.csv"); // 假设CSV文件在项目的data目录下
+    const response = await fetch("/tasks/words/vocab.csv"); // 假设CSV文件在项目的data目录下
     const csvText = await response.text();
 
     // 解析 CSV 数据
