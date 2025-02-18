@@ -10,9 +10,36 @@ body {
 /* 容器居中 */
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.auth-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-container input {
+  margin: 5px;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.auth-container button {
+  margin: 5px;
+  padding: 8px;
+  background-color: #8a66d3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-container button:hover {
+  background-color: #6a4c9c;
 }
 
 /* 卡片样式 */
