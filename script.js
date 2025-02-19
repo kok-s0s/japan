@@ -4,6 +4,8 @@ import {
   doc,
   setDoc,
   getDoc,
+  updateDoc,
+  arrayUnion,
 } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 import {
   getAuth,
@@ -31,6 +33,12 @@ const auth = getAuth();
 
 let japaneseWordsData = [];
 let currentIndex = 0;
+
+// 获取 HTML 元素
+const inputField = document.getElementById("input");
+const checkButton = document.getElementById("checkButton");
+const resultText = document.getElementById("result");
+const romajiText = document.getElementById("romaji");
 
 // 加载 CSV 数据
 const loadCSVData = async () => {
@@ -68,11 +76,73 @@ const displayWord = (index) => {
   document.getElementById("kana").textContent = `假名: ${word.kana}`;
   document.getElementById("japanese").textContent = `日语: ${word.japanese}`;
   document.getElementById("chinese").textContent = `中文: ${word.chinese}`;
-  document.getElementById("romaji").textContent = `罗马字: ${word.romaji}`;
+  romajiText.textContent = `罗马字: ${word.romaji}`;
+  romajiText.style.display = "block"; // 每次切换单词时确保罗马字可见
+
+  resultText.textContent = "";
+  inputField.value = "";
 
   // 如果用户已登录，保存进度
   if (auth.currentUser) {
     saveUserProgress(auth.currentUser.uid, index);
+  }
+};
+
+// 输入框聚焦时隐藏罗马字
+inputField.addEventListener("focus", () => {
+  romajiText.style.display = "none";
+});
+
+// **点击检查按钮**
+checkButton.addEventListener("click", async () => {
+  const word = japaneseWordsData[currentIndex];
+  const userInput = inputField.value.trim();
+  const userId = auth.currentUser ? auth.currentUser.uid : "guest";
+
+  let isCorrect = userInput === word.japanese || userInput === word.kana;
+  if (isCorrect) {
+    resultText.textContent = "正确！🎉";
+    resultText.style.color = "green";
+  } else {
+    resultText.textContent = "错误！❌";
+    resultText.style.color = "red";
+  }
+
+  // 只有点击检查按钮后才重新显示罗马字
+  romajiText.style.display = "block";
+
+  // **更新 Firestore 词语统计**
+  await updateWordStats(userId, word.japanese, isCorrect);
+});
+
+// **更新 Firestore 统计数据**
+const updateWordStats = async (userId, word, isCorrect) => {
+  try {
+    const wordRef = doc(db, "word_stats", userId);
+    const docSnap = await getDoc(wordRef);
+
+    if (docSnap.exists()) {
+      // 词语已存在，更新统计
+      let data = docSnap.data();
+      if (!data[word]) {
+        data[word] = { right: 0, wrong: 0 };
+      }
+      if (isCorrect) {
+        data[word].right += 1;
+      } else {
+        data[word].wrong += 1;
+      }
+      await setDoc(wordRef, data, { merge: true });
+    } else {
+      // 新建用户统计数据
+      await setDoc(wordRef, {
+        [word]: { right: isCorrect ? 1 : 0, wrong: isCorrect ? 0 : 1 },
+      });
+    }
+
+    console.log(`单词 "${word}" 统计已更新`);
+  } catch (error) {
+    console.error("更新单词统计失败:", error);
   }
 };
 
@@ -99,7 +169,7 @@ const userStatus = document.getElementById("userStatus");
 // 注册
 registerButton.addEventListener("click", async () => {
   try {
-    const userCredential = await createUserWithEmailAndPassword(
+    await createUserWithEmailAndPassword(
       auth,
       emailInput.value,
       passwordInput.value
@@ -113,7 +183,7 @@ registerButton.addEventListener("click", async () => {
 // 登录
 loginButton.addEventListener("click", async () => {
   try {
-    const userCredential = await signInWithEmailAndPassword(
+    await signInWithEmailAndPassword(
       auth,
       emailInput.value,
       passwordInput.value
