@@ -114,3 +114,48 @@ body {
   font-size: 16px;
   color: #ddd;
 }
+
+* 练习输入框 */ .training {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.training input {
+  padding: 10px;
+  width: 220px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  background-color: #1e1e1e;
+  color: white;
+  transition: border 0.3s ease-in-out;
+}
+
+/* 输入框聚焦时高亮 */
+.training input:focus {
+  border: 1px solid #8a66d3;
+  outline: none;
+}
+
+/* 检查按钮 */
+#checkButton {
+  padding: 10px 15px;
+  margin-left: 10px;
+  background-color: #8a66d3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+#checkButton:hover {
+  background-color: #6a4c9c;
+}
+
+/* 结果显示 */
+#result {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #8a66d3;
+}
