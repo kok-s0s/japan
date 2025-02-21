@@ -1,60 +1,87 @@
-/* 重置默认样式 */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #121212; /* 背景颜色 */
-  color: #ffffff; /* 文字颜色 */
-}
+  background-color: #121212;
+  color: #fff;
+  width: 100%;
 
-/* 容器居中 */
-.container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 90%;
+  max-width: 600px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
 .auth-container {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.auth-container #userStatus {
+  margin: 0;
+  font-size: 20px;
+  color: #fff;
+  flex-grow: 1;
 }
 
 .auth-container input {
-  margin: 5px;
+  max-width: 160px;
   padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  background-color: #333;
+  color: #fff;
+}
+
+.auth-container input:focus {
+  outline: none;
+  border-color: #8a66d3;
 }
 
 .auth-container button {
-  margin: 5px;
-  padding: 8px;
+  min-width: 80px;
+  padding: 8px 6px;
   background-color: #8a66d3;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  flex-grow: 0;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .auth-container button:hover {
   background-color: #6a4c9c;
 }
 
-/* 卡片样式 */
 .card {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background-color: #1e1e1e;
+  align-items: center;
+  background-color: #2b2b2b;
   padding: 20px;
   border-radius: 10px;
+  width: 100%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  width: 400px;
 }
 
-/* 左右按钮的样式 */
 .nav-button {
   background-color: transparent;
   border: none;
@@ -63,44 +90,41 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  color: #8a66d3; /* 紫蓝色 */
+  color: #8a66d3;
   transition: transform 0.2s ease-in-out;
   padding: 0px;
 }
 
-/* 左按钮（三角形） */
 .nav-button.left {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 18px solid #8a66d3; /* 紫蓝色 */
+  border-bottom: 18px solid #8a66d3;
 }
 
-/* 右按钮（三角形） */
 .nav-button.right {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 18px solid #8a66d3; /* 紫蓝色 */
+  border-top: 18px solid #8a66d3;
 }
 
-/* 鼠标悬停时按钮动画 */
 .nav-button:hover {
   transform: scale(1.1);
 }
 
-/* 卡片内容 */
 .card-content {
-  text-align: center;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 每一行的样式 */
-.row {
-  margin: 10px 0;
+.card-content .row {
+  margin: 8px 0;
 }
 
 #japanese {
-  font-size: 24px;
-  color: #ffffff;
+  font-size: 28px;
+  color: #fff;
 }
 
 #kana {
@@ -115,47 +139,41 @@ body {
   color: #ddd;
 }
 
-* 练习输入框 */ .training {
-  margin-top: 20px;
-  text-align: center;
+.training {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .training input {
-  padding: 10px;
-  width: 220px;
+  padding: 12px;
+  width: 240px;
   font-size: 18px;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid #aaa;
-  background-color: #1e1e1e;
-  color: white;
-  transition: border 0.3s ease-in-out;
+  background-color: #333;
+  color: #fff;
 }
 
-/* 输入框聚焦时高亮 */
 .training input:focus {
-  border: 1px solid #8a66d3;
+  border-color: #8a66d3;
   outline: none;
 }
 
-/* 检查按钮 */
 #checkButton {
-  padding: 10px 15px;
-  margin-left: 10px;
+  padding: 12px 20px;
   background-color: #8a66d3;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s;
 }
 
 #checkButton:hover {
   background-color: #6a4c9c;
 }
 
-/* 结果显示 */
 #result {
-  margin-top: 10px;
-  font-size: 18px;
   color: #8a66d3;
 }

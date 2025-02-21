@@ -203,12 +203,20 @@ logoutButton.addEventListener("click", async () => {
 // 监听用户登录状态
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    userStatus.textContent = `已登录: ${user.email}`;
+    userStatus.textContent = `${user.email}`;
     logoutButton.style.display = "block";
+    emailInput.style.display = "none";
+    passwordInput.style.display = "none";
+    loginButton.style.display = "none";
+    registerButton.style.display = "none";
     loadUserProgress(user.uid);
   } else {
     userStatus.textContent = "未登录";
     logoutButton.style.display = "none";
+    emailInput.style.display = "inline-block";
+    passwordInput.style.display = "inline-block";
+    loginButton.style.display = "inline-block";
+    registerButton.style.display = "inline-block";
   }
 });
 

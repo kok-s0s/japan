@@ -9,17 +9,15 @@
   </head>
   <body>
     <div class="container">
-      <!-- 登录表单 -->
       <div class="auth-container">
+        <p id="userStatus">未登录</p>
         <input type="email" id="email" placeholder="邮箱" />
         <input type="password" id="password" placeholder="密码" />
         <button id="loginButton">登录</button>
         <button id="registerButton">注册</button>
         <button id="logoutButton" style="display: none">登出</button>
-        <p id="userStatus">未登录</p>
       </div>
 
-      <!-- 单词卡片 -->
       <div class="card">
         <button
           id="prevButton"
@@ -30,8 +28,8 @@
         <div class="card-content">
           <div class="row"><div id="japanese"></div></div>
           <div class="row"><div id="kana"></div></div>
-          <div class="row"><p id="chinese"></p></div>
-          <div class="row"><p id="romaji"></p></div>
+          <div class="row"><div id="chinese"></div></div>
+          <div class="row"><div id="romaji"></div></div>
         </div>
 
         <button
@@ -41,18 +39,15 @@
         ></button>
       </div>
 
-      <!-- 练习输入 -->
       <div class="training">
-        <div class="row">
-          <input
-            type="text"
-            id="input"
-            placeholder="请输入假名"
-            autocomplete="off"
-          />
-          <button id="checkButton">检查</button>
-        </div>
-        <div class="row"><p id="result"></p></div>
+        <input
+          type="text"
+          id="input"
+          placeholder="请输入假名"
+          autocomplete="off"
+        />
+        <button id="checkButton">检查</button>
+        <p id="result"></p>
       </div>
     </div>
   </body>
