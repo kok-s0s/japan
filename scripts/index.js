@@ -240,3 +240,7 @@ const loadUserProgress = async (userId) => {
 
 // 加载 CSV 数据
 loadCSVData();
+
+document.getElementById("viewDatabaseBtn").addEventListener("click", function() {
+  window.location.href = "database.html";
+});
