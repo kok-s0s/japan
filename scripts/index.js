@@ -68,7 +68,27 @@ const parseCSV = (csvText) => {
   });
 };
 
-// 显示单词
+// 获取发音按钮
+const speakButton = document.getElementById("speakButton");
+
+// 点击发音按钮时发音当前单词
+speakButton.addEventListener("click", () => {
+  const word = japaneseWordsData[currentIndex];
+  speakWord(word.japanese); // 发音日语单词
+});
+
+// 发音功能函数
+const speakWord = (word) => {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "ja-JP"; // 设置为日语
+  utterance.rate = 0.5; // 语速
+  utterance.pitch = 0.8; // 音调
+
+  // 调用浏览器的语音合成功能
+  window.speechSynthesis.speak(utterance);
+};
+
+// 显示单词时，确保发音按钮可见
 const displayWord = (index) => {
   if (index < 0 || index >= japaneseWordsData.length) return;
 
@@ -82,7 +102,8 @@ const displayWord = (index) => {
   resultText.textContent = "";
   inputField.value = "";
 
-  // 如果用户已登录，保存进度
+  speakButton.style.display = "inline-block"; // 确保按钮显示
+
   if (auth.currentUser) {
     saveUserProgress(auth.currentUser.uid, index);
   }

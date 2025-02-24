@@ -20,20 +20,36 @@
       </div>
 
       <div class="card">
-        <button id="prevButton" class="nav-button left" aria-label="prev"></button>
+        <button
+          id="prevButton"
+          class="nav-button left"
+          aria-label="prev"
+        ></button>
 
         <div class="card-content">
-          <div class="row"><div id="japanese"></div></div>
+          <div class="row">
+            <div id="japanese"></div>
+            <button id="speakButton">🎧</button>
+          </div>
           <div class="row"><div id="kana"></div></div>
           <div class="row"><div id="chinese"></div></div>
           <div class="row"><div id="romaji"></div></div>
         </div>
 
-        <button id="nextButton" class="nav-button right" aria-label="next"></button>
+        <button
+          id="nextButton"
+          class="nav-button right"
+          aria-label="next"
+        ></button>
       </div>
 
       <div class="training">
-        <input type="text" id="input" placeholder="请输入假名" autocomplete="off" />
+        <input
+          type="text"
+          id="input"
+          placeholder="请输入假名"
+          autocomplete="off"
+        />
         <button id="checkButton">检查</button>
         <p id="result"></p>
       </div>

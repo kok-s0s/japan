@@ -99,13 +99,35 @@
 
 .card-content {
   display: flex;
+  gap: 1rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .card-content .row {
-  margin: 8px 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#speakButton {
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #8a66d3;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+#speakButton:hover {
+  background-color: #6a4c9c;
 }
 
 #japanese {
