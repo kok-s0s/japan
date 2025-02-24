@@ -1,5 +1,5 @@
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #121212;
@@ -9,4 +9,18 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.purple-btn {
+  background-color: #6a5acd;
+  color: white;
+  min-width: 80px;
+  padding: 6px 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.purple-btn:hover {
+  background-color: #836fff;
 }

@@ -238,9 +238,10 @@ const loadUserProgress = async (userId) => {
   }
 };
 
-// 加载 CSV 数据
-loadCSVData();
-
-document.getElementById("viewDatabaseBtn").addEventListener("click", function() {
+// 查看数据库按钮
+document.getElementById("viewDatabaseBtn").addEventListener("click", () => {
   window.location.href = "database.html";
 });
+
+// 加载 CSV 数据
+loadCSVData();

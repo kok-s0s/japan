@@ -3,13 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>日语打字练习</title>
+    <title>日语单词数据库</title>
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/database.css" />
     <script type="module" src="scripts/database.js"></script>
   </head>
   <body>
     <div class="container">
+      <input type="text" id="searchBox" placeholder="🔍 搜索单词..." />
+
+      <table>
+        <thead>
+          <tr>
+            <th>日语</th>
+            <th>假名</th>
+            <th>中文</th>
+            <th>罗马字</th>
+          </tr>
+        </thead>
+        <tbody id="wordsTable">
+          <!-- 这里填充数据 -->
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <button id="prevPage">⬅️ 上一页</button>
+        <span id="pageInfo">第 1 页</span>
+        <button id="nextPage">➡️ 下一页</button>
+      </div>
+
       <button id="backHomePageBtn" class="purple-btn">返回主页</button>
     </div>
   </body>
