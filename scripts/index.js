@@ -77,6 +77,15 @@ speakButton.addEventListener("click", () => {
   speakWord(word.japanese); // 发音日语单词
 });
 
+// 按下空格键时发音当前单词
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
+    event.preventDefault(); // 防止页面滚动
+    const word = japaneseWordsData[currentIndex];
+    speakWord(word.japanese);
+  }
+});
+
 // 发音功能函数
 const speakWord = (word) => {
   const utterance = new SpeechSynthesisUtterance(word);
@@ -112,6 +121,24 @@ const displayWord = (index) => {
 // 输入框聚焦时隐藏罗马字
 inputField.addEventListener("focus", () => {
   romajiText.style.display = "none";
+});
+
+// 用户输入时也隐藏罗马字
+inputField.addEventListener("input", () => {
+  romajiText.style.display = "none";
+});
+
+// 输入框失焦时显示罗马字
+inputField.addEventListener("blur", () => {
+  romajiText.style.display = "block";
+});
+
+// 监听输入框按键事件
+inputField.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault(); // 防止回车触发默认行为（如表单提交）
+    checkButton.click(); // 触发检查按钮点击
+  }
 });
 
 // **点击检查按钮**
@@ -177,6 +204,16 @@ document.getElementById("prevButton").addEventListener("click", () => {
 document.getElementById("nextButton").addEventListener("click", () => {
   currentIndex = (currentIndex + 1) % japaneseWordsData.length;
   displayWord(currentIndex);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") {
+    // 按下左方向键，切换到上一个单词
+    document.getElementById("prevButton").click();
+  } else if (event.key === "ArrowRight") {
+    // 按下右方向键，切换到下一个单词
+    document.getElementById("nextButton").click();
+  }
 });
 
 // 登录注册逻辑
