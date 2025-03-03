@@ -1,4 +1,4 @@
-const wordsPerPage = 10; // 每页显示 10 个单词
+const wordsPerPage = 8; // 每页显示 8 个单词
 let japaneseWordsData = []; // 存储单词数据
 let currentPage = 1;
 let filteredData = []; // 过滤后的数据
