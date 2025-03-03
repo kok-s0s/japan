@@ -260,8 +260,17 @@ logoutButton.addEventListener('click', async () => {
 
 // 监听用户登录状态
 onAuthStateChanged(auth, async (user) => {
+  const userStatus = document.getElementById('userStatus');
   if (user) {
-    userStatus.textContent = `${user.email}`;
+    // 设置为可点击的邮箱链接
+    userStatus.innerHTML = `<a href="/user-settings" id="userEmailLink">${user.email}</a>`;
+    const userEmailLink = document.getElementById('userEmailLink');
+    userEmailLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '/special.html';
+    });
+
+    // 显示登出按钮，隐藏登录相关输入
     logoutButton.style.display = 'block';
     emailInput.style.display = 'none';
     passwordInput.style.display = 'none';
