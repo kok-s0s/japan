@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/index.css" />
     <script type="module" src="scripts/index.js"></script>
+    <script type="module" src="scripts/countdown.js"></script>
   </head>
   <body>
     <div class="container">
@@ -52,6 +53,11 @@
         />
         <button id="checkButton">检查</button>
         <p id="result"></p>
+      </div>
+
+      <div class="jlpt">
+        <div>距离 JLPT 考试时间</div>
+        <div id="countdown" class="countdown-display">计算中...</div>
       </div>
 
       <button id="viewDatabaseBtn" class="purple-btn">查看词库</button>

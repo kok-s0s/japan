@@ -205,3 +205,14 @@ a:active {
 #result {
   color: #8a66d3;
 }
+
+.jlpt {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2b2b2b;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
