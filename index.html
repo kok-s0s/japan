@@ -2,22 +2,31 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>日语打字练习</title>
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/index.css" />
     <script type="module" src="scripts/index.js"></script>
     <script type="module" src="scripts/countdown.js"></script>
+    <!-- 引入 SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
   <body>
     <div class="container">
       <div class="auth-container">
         <p id="userStatus">未登录</p>
-        <input type="email" id="email" placeholder="邮箱" />
-        <input type="password" id="password" placeholder="密码" />
-        <button id="loginButton">登录</button>
-        <button id="registerButton">注册</button>
-        <button id="logoutButton" style="display: none">登出</button>
+        <div id="authForm">
+          <input type="email" id="email" placeholder="邮箱" />
+          <input type="password" id="password" placeholder="密码" />
+        </div>
+        <div id="authButtons">
+          <button id="loginButton">登录</button>
+          <button id="registerButton">注册</button>
+          <button id="logoutButton" style="display: none">登出</button>
+        </div>
       </div>
 
       <div class="card">
@@ -52,7 +61,6 @@
           autocomplete="off"
         />
         <button id="checkButton">检查</button>
-        <p id="result"></p>
       </div>
 
       <div class="jlpt">

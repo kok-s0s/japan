@@ -24,3 +24,11 @@ body {
 .purple-btn:hover {
   background-color: #836fff;
 }
+
+@media screen and (max-width: 420px) {
+  .purple-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+  }
+}

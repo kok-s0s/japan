@@ -202,10 +202,6 @@ a:active {
   background-color: #6a4c9c;
 }
 
-#result {
-  color: #8a66d3;
-}
-
 .jlpt {
   display: flex;
   justify-content: space-between;
@@ -215,4 +211,73 @@ a:active {
   border-radius: 10px;
   width: 100%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* 适配 iPhone 13（及其他移动端） */
+@media screen and (max-width: 420px) {
+  .auth-container {
+    flex-direction: column;
+    padding: 16px;
+    gap: 8px;
+  }
+
+  #authForm {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  #authForm input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  #authButtons {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  #authButtons button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card-content {
+    gap: 0.5rem;
+  }
+
+  #japanese {
+    font-size: 22px;
+  }
+
+  #kana,
+  #chinese,
+  #romaji {
+    font-size: 16px;
+  }
+
+  .training {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .training input {
+    width: 100%;
+  }
+
+  #checkButton {
+    width: 100%;
+  }
+
+  .jlpt {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 16px;
+  }
 }

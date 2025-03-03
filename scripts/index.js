@@ -37,7 +37,6 @@ let currentIndex = 0;
 // 获取 HTML 元素
 const inputField = document.getElementById('input');
 const checkButton = document.getElementById('checkButton');
-const resultText = document.getElementById('result');
 const romajiText = document.getElementById('romaji');
 
 // 加载 CSV 数据
@@ -108,7 +107,6 @@ const displayWord = (index) => {
   romajiText.textContent = `罗马字: ${word.romaji}`;
   romajiText.style.display = 'block'; // 每次切换单词时确保罗马字可见
 
-  resultText.textContent = '';
   inputField.value = '';
 
   speakButton.style.display = 'inline-block'; // 确保按钮显示
@@ -148,16 +146,24 @@ checkButton.addEventListener('click', async () => {
   const userId = auth.currentUser ? auth.currentUser.uid : 'guest';
 
   let isCorrect = userInput === word.japanese || userInput === word.kana;
-  if (isCorrect) {
-    resultText.textContent = '正确！🎉';
-    resultText.style.color = 'green';
-  } else {
-    resultText.textContent = '错误！❌';
-    resultText.style.color = 'red';
-  }
 
-  // 只有点击检查按钮后才重新显示罗马字
-  romajiText.style.display = 'block';
+  // **显示弹窗**
+  Swal.fire({
+    title: isCorrect ? '正确！🎉' : '错误！❌',
+    text: isCorrect
+      ? '回答正确，继续下一个单词！'
+      : `正确答案是：${word.japanese} (${word.kana})`,
+    icon: isCorrect ? 'success' : 'error',
+    confirmButtonText: '确定',
+  }).then(() => {
+    if (isCorrect) {
+      // **用户点击“确定”后跳转到下一个单词**
+      currentIndex = (currentIndex + 1) % japaneseWordsData.length;
+      displayWord(currentIndex);
+      // **清空输入框**
+      inputField.value = '';
+    }
+  });
 
   // **更新 Firestore 词语统计**
   await updateWordStats(userId, word.japanese, isCorrect);
@@ -261,6 +267,8 @@ logoutButton.addEventListener('click', async () => {
 // 监听用户登录状态
 onAuthStateChanged(auth, async (user) => {
   const userStatus = document.getElementById('userStatus');
+  const authContainer = document.querySelector('.auth-container');
+
   if (user) {
     // 设置为可点击的邮箱链接
     userStatus.innerHTML = `<a href="/user-settings" id="userEmailLink">${user.email}</a>`;
@@ -277,6 +285,9 @@ onAuthStateChanged(auth, async (user) => {
     loginButton.style.display = 'none';
     registerButton.style.display = 'none';
     loadUserProgress(user.uid);
+
+    // 用户登录后，移除 flex-direction: column;
+    authContainer.style.flexDirection = 'row';
   } else {
     userStatus.textContent = '未登录';
     logoutButton.style.display = 'none';
