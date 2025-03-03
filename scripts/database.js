@@ -5,9 +5,9 @@ let filteredData = []; // 过滤后的数据
 
 // 解析 CSV
 const parseCSV = (csvText) => {
-  const lines = csvText.trim().split("\n");
+  const lines = csvText.trim().split('\n');
   return lines.slice(1).map((line) => {
-    const [kana, japanese, chinese, romaji] = line.split(",");
+    const [kana, japanese, chinese, romaji] = line.split(',');
     return { kana, japanese, chinese, romaji };
   });
 };
@@ -15,26 +15,26 @@ const parseCSV = (csvText) => {
 // 加载 CSV 数据
 const loadCSVData = async () => {
   try {
-    const response = await fetch("/tasks/words/vocab.csv");
+    const response = await fetch('/tasks/words/vocab.csv');
     const csvText = await response.text();
     japaneseWordsData = parseCSV(csvText);
     filteredData = japaneseWordsData; // 初始时不过滤
     displayWords();
   } catch (error) {
-    console.error("加载 CSV 失败:", error);
+    console.error('加载 CSV 失败:', error);
   }
 };
 
 // 显示单词
 const displayWords = () => {
-  const tableBody = document.getElementById("wordsTable");
-  tableBody.innerHTML = ""; // 清空表格
+  const tableBody = document.getElementById('wordsTable');
+  tableBody.innerHTML = ''; // 清空表格
 
   const startIndex = (currentPage - 1) * wordsPerPage;
   const pageData = filteredData.slice(startIndex, startIndex + wordsPerPage);
 
   pageData.forEach((word) => {
-    const row = document.createElement("tr");
+    const row = document.createElement('tr');
     row.innerHTML = `
       <td>${word.japanese}</td>
       <td>${word.kana}</td>
@@ -49,23 +49,23 @@ const displayWords = () => {
 
 // 更新翻页信息
 const updatePaginationInfo = () => {
-  const pageInfo = document.getElementById("pageInfo");
+  const pageInfo = document.getElementById('pageInfo');
   const totalPages = Math.ceil(filteredData.length / wordsPerPage);
   pageInfo.textContent = `第 ${currentPage} 页 / 共 ${totalPages} 页`;
 
-  document.getElementById("prevPage").disabled = currentPage === 1;
-  document.getElementById("nextPage").disabled = currentPage === totalPages;
+  document.getElementById('prevPage').disabled = currentPage === 1;
+  document.getElementById('nextPage').disabled = currentPage === totalPages;
 };
 
 // 处理翻页按钮点击
-document.getElementById("prevPage").addEventListener("click", () => {
+document.getElementById('prevPage').addEventListener('click', () => {
   if (currentPage > 1) {
     currentPage--;
     displayWords();
   }
 });
 
-document.getElementById("nextPage").addEventListener("click", () => {
+document.getElementById('nextPage').addEventListener('click', () => {
   const totalPages = Math.ceil(filteredData.length / wordsPerPage);
   if (currentPage < totalPages) {
     currentPage++;
@@ -74,7 +74,7 @@ document.getElementById("nextPage").addEventListener("click", () => {
 });
 
 // 处理搜索
-document.getElementById("searchBox").addEventListener("input", (event) => {
+document.getElementById('searchBox').addEventListener('input', (event) => {
   const keyword = event.target.value.trim().toLowerCase();
   filteredData = japaneseWordsData.filter(
     (word) =>
@@ -88,8 +88,8 @@ document.getElementById("searchBox").addEventListener("input", (event) => {
 });
 
 // 返回主页按钮
-document.getElementById("backHomePageBtn").addEventListener("click", () => {
-  window.location.href = "index.html";
+document.getElementById('backHomePageBtn').addEventListener('click', () => {
+  window.location.href = 'index.html';
 });
 
 // 加载 CSV

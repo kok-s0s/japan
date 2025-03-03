@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js';
 import {
   getFirestore,
   doc,
@@ -6,24 +6,24 @@ import {
   getDoc,
   updateDoc,
   arrayUnion,
-} from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+} from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+} from 'https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js';
 
 // Firebase 配置
 const firebaseConfig = {
-  apiKey: "AIzaSyAH7f0zyP1nyYZ7M6U_0Ars5LewmHQB97o",
-  authDomain: "pass-japan-n1.firebaseapp.com",
-  projectId: "pass-japan-n1",
-  storageBucket: "pass-japan-n1.firebasestorage.app",
-  messagingSenderId: "591958034120",
-  appId: "1:591958034120:web:9d452492fc1de7f94ac7fd",
-  measurementId: "G-Z9VXGETXFS",
+  apiKey: 'AIzaSyAH7f0zyP1nyYZ7M6U_0Ars5LewmHQB97o',
+  authDomain: 'pass-japan-n1.firebaseapp.com',
+  projectId: 'pass-japan-n1',
+  storageBucket: 'pass-japan-n1.firebasestorage.app',
+  messagingSenderId: '591958034120',
+  appId: '1:591958034120:web:9d452492fc1de7f94ac7fd',
+  measurementId: 'G-Z9VXGETXFS',
 };
 
 // 初始化 Firebase
@@ -35,18 +35,18 @@ let japaneseWordsData = [];
 let currentIndex = 0;
 
 // 获取 HTML 元素
-const inputField = document.getElementById("input");
-const checkButton = document.getElementById("checkButton");
-const resultText = document.getElementById("result");
-const romajiText = document.getElementById("romaji");
+const inputField = document.getElementById('input');
+const checkButton = document.getElementById('checkButton');
+const resultText = document.getElementById('result');
+const romajiText = document.getElementById('romaji');
 
 // 加载 CSV 数据
 const loadCSVData = async () => {
   try {
-    const response = await fetch("/tasks/words/vocab.csv");
+    const response = await fetch('/tasks/words/vocab.csv');
     const csvText = await response.text();
     japaneseWordsData = parseCSV(csvText);
-    console.log("单词数据：", japaneseWordsData);
+    console.log('单词数据：', japaneseWordsData);
 
     // 如果用户已登录，恢复进度
     if (auth.currentUser) {
@@ -55,31 +55,31 @@ const loadCSVData = async () => {
       displayWord(0);
     }
   } catch (error) {
-    console.error("加载 CSV 失败:", error);
+    console.error('加载 CSV 失败:', error);
   }
 };
 
 // 解析 CSV
 const parseCSV = (csvText) => {
-  const lines = csvText.trim().split("\n");
+  const lines = csvText.trim().split('\n');
   return lines.slice(1).map((line) => {
-    const [kana, japanese, chinese, romaji] = line.split(",");
+    const [kana, japanese, chinese, romaji] = line.split(',');
     return { kana, japanese, chinese, romaji };
   });
 };
 
 // 获取发音按钮
-const speakButton = document.getElementById("speakButton");
+const speakButton = document.getElementById('speakButton');
 
 // 点击发音按钮时发音当前单词
-speakButton.addEventListener("click", () => {
+speakButton.addEventListener('click', () => {
   const word = japaneseWordsData[currentIndex];
   speakWord(word.japanese); // 发音日语单词
 });
 
 // 按下空格键时发音当前单词
-document.addEventListener("keydown", (event) => {
-  if (event.code === "Space") {
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Space') {
     event.preventDefault(); // 防止页面滚动
     const word = japaneseWordsData[currentIndex];
     speakWord(word.japanese);
@@ -89,7 +89,7 @@ document.addEventListener("keydown", (event) => {
 // 发音功能函数
 const speakWord = (word) => {
   const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "ja-JP"; // 设置为日语
+  utterance.lang = 'ja-JP'; // 设置为日语
   utterance.rate = 0.5; // 语速
   utterance.pitch = 0.8; // 音调
 
@@ -102,16 +102,16 @@ const displayWord = (index) => {
   if (index < 0 || index >= japaneseWordsData.length) return;
 
   const word = japaneseWordsData[index];
-  document.getElementById("kana").textContent = `假名: ${word.kana}`;
-  document.getElementById("japanese").textContent = `日语: ${word.japanese}`;
-  document.getElementById("chinese").textContent = `中文: ${word.chinese}`;
+  document.getElementById('kana').textContent = `假名: ${word.kana}`;
+  document.getElementById('japanese').textContent = `日语: ${word.japanese}`;
+  document.getElementById('chinese').textContent = `中文: ${word.chinese}`;
   romajiText.textContent = `罗马字: ${word.romaji}`;
-  romajiText.style.display = "block"; // 每次切换单词时确保罗马字可见
+  romajiText.style.display = 'block'; // 每次切换单词时确保罗马字可见
 
-  resultText.textContent = "";
-  inputField.value = "";
+  resultText.textContent = '';
+  inputField.value = '';
 
-  speakButton.style.display = "inline-block"; // 确保按钮显示
+  speakButton.style.display = 'inline-block'; // 确保按钮显示
 
   if (auth.currentUser) {
     saveUserProgress(auth.currentUser.uid, index);
@@ -119,45 +119,45 @@ const displayWord = (index) => {
 };
 
 // 输入框聚焦时隐藏罗马字
-inputField.addEventListener("focus", () => {
-  romajiText.style.display = "none";
+inputField.addEventListener('focus', () => {
+  romajiText.style.display = 'none';
 });
 
 // 用户输入时也隐藏罗马字
-inputField.addEventListener("input", () => {
-  romajiText.style.display = "none";
+inputField.addEventListener('input', () => {
+  romajiText.style.display = 'none';
 });
 
 // 输入框失焦时显示罗马字
-inputField.addEventListener("blur", () => {
-  romajiText.style.display = "block";
+inputField.addEventListener('blur', () => {
+  romajiText.style.display = 'block';
 });
 
 // 监听输入框按键事件
-inputField.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
+inputField.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
     event.preventDefault(); // 防止回车触发默认行为（如表单提交）
     checkButton.click(); // 触发检查按钮点击
   }
 });
 
 // **点击检查按钮**
-checkButton.addEventListener("click", async () => {
+checkButton.addEventListener('click', async () => {
   const word = japaneseWordsData[currentIndex];
   const userInput = inputField.value.trim();
-  const userId = auth.currentUser ? auth.currentUser.uid : "guest";
+  const userId = auth.currentUser ? auth.currentUser.uid : 'guest';
 
   let isCorrect = userInput === word.japanese || userInput === word.kana;
   if (isCorrect) {
-    resultText.textContent = "正确！🎉";
-    resultText.style.color = "green";
+    resultText.textContent = '正确！🎉';
+    resultText.style.color = 'green';
   } else {
-    resultText.textContent = "错误！❌";
-    resultText.style.color = "red";
+    resultText.textContent = '错误！❌';
+    resultText.style.color = 'red';
   }
 
   // 只有点击检查按钮后才重新显示罗马字
-  romajiText.style.display = "block";
+  romajiText.style.display = 'block';
 
   // **更新 Firestore 词语统计**
   await updateWordStats(userId, word.japanese, isCorrect);
@@ -166,7 +166,7 @@ checkButton.addEventListener("click", async () => {
 // **更新 Firestore 统计数据**
 const updateWordStats = async (userId, word, isCorrect) => {
   try {
-    const wordRef = doc(db, "word_stats", userId);
+    const wordRef = doc(db, 'word_stats', userId);
     const docSnap = await getDoc(wordRef);
 
     if (docSnap.exists()) {
@@ -190,98 +190,98 @@ const updateWordStats = async (userId, word, isCorrect) => {
 
     console.log(`单词 "${word}" 统计已更新`);
   } catch (error) {
-    console.error("更新单词统计失败:", error);
+    console.error('更新单词统计失败:', error);
   }
 };
 
 // 切换单词
-document.getElementById("prevButton").addEventListener("click", () => {
+document.getElementById('prevButton').addEventListener('click', () => {
   currentIndex =
     (currentIndex - 1 + japaneseWordsData.length) % japaneseWordsData.length;
   displayWord(currentIndex);
 });
 
-document.getElementById("nextButton").addEventListener("click", () => {
+document.getElementById('nextButton').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % japaneseWordsData.length;
   displayWord(currentIndex);
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowLeft") {
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowLeft') {
     // 按下左方向键，切换到上一个单词
-    document.getElementById("prevButton").click();
-  } else if (event.key === "ArrowRight") {
+    document.getElementById('prevButton').click();
+  } else if (event.key === 'ArrowRight') {
     // 按下右方向键，切换到下一个单词
-    document.getElementById("nextButton").click();
+    document.getElementById('nextButton').click();
   }
 });
 
 // 登录注册逻辑
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
-const loginButton = document.getElementById("loginButton");
-const registerButton = document.getElementById("registerButton");
-const logoutButton = document.getElementById("logoutButton");
-const userStatus = document.getElementById("userStatus");
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const loginButton = document.getElementById('loginButton');
+const registerButton = document.getElementById('registerButton');
+const logoutButton = document.getElementById('logoutButton');
+const userStatus = document.getElementById('userStatus');
 
 // 注册
-registerButton.addEventListener("click", async () => {
+registerButton.addEventListener('click', async () => {
   try {
     await createUserWithEmailAndPassword(
       auth,
       emailInput.value,
       passwordInput.value
     );
-    alert("注册成功！");
+    alert('注册成功！');
   } catch (error) {
     alert(error.message);
   }
 });
 
 // 登录
-loginButton.addEventListener("click", async () => {
+loginButton.addEventListener('click', async () => {
   try {
     await signInWithEmailAndPassword(
       auth,
       emailInput.value,
       passwordInput.value
     );
-    alert("登录成功！");
+    alert('登录成功！');
   } catch (error) {
     alert(error.message);
   }
 });
 
 // 登出
-logoutButton.addEventListener("click", async () => {
+logoutButton.addEventListener('click', async () => {
   await signOut(auth);
-  alert("已登出！");
+  alert('已登出！');
 });
 
 // 监听用户登录状态
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     userStatus.textContent = `${user.email}`;
-    logoutButton.style.display = "block";
-    emailInput.style.display = "none";
-    passwordInput.style.display = "none";
-    loginButton.style.display = "none";
-    registerButton.style.display = "none";
+    logoutButton.style.display = 'block';
+    emailInput.style.display = 'none';
+    passwordInput.style.display = 'none';
+    loginButton.style.display = 'none';
+    registerButton.style.display = 'none';
     loadUserProgress(user.uid);
   } else {
-    userStatus.textContent = "未登录";
-    logoutButton.style.display = "none";
-    emailInput.style.display = "inline-block";
-    passwordInput.style.display = "inline-block";
-    loginButton.style.display = "inline-block";
-    registerButton.style.display = "inline-block";
+    userStatus.textContent = '未登录';
+    logoutButton.style.display = 'none';
+    emailInput.style.display = 'inline-block';
+    passwordInput.style.display = 'inline-block';
+    loginButton.style.display = 'inline-block';
+    registerButton.style.display = 'inline-block';
   }
 });
 
 // 存储用户进度
 const saveUserProgress = async (userId, index) => {
   await setDoc(
-    doc(db, "users", userId),
+    doc(db, 'users', userId),
     { lastWordIndex: index },
     { merge: true }
   );
@@ -289,7 +289,7 @@ const saveUserProgress = async (userId, index) => {
 
 // 读取用户进度
 const loadUserProgress = async (userId) => {
-  const docSnap = await getDoc(doc(db, "users", userId));
+  const docSnap = await getDoc(doc(db, 'users', userId));
   if (docSnap.exists()) {
     currentIndex = docSnap.data().lastWordIndex || 0;
     displayWord(currentIndex);
@@ -297,8 +297,8 @@ const loadUserProgress = async (userId) => {
 };
 
 // 查看数据库按钮
-document.getElementById("viewDatabaseBtn").addEventListener("click", () => {
-  window.location.href = "database.html";
+document.getElementById('viewDatabaseBtn').addEventListener('click', () => {
+  window.location.href = 'database.html';
 });
 
 // 加载 CSV 数据
