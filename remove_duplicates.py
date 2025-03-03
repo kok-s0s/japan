@@ -33,7 +33,7 @@ def check_file_path_and_remove_duplicates(vocab_csv_filename):
 
 
 if __name__ == "__main__":
-    vocab_csv_filename = "tasks/words/vocab.csv"
+    vocab_csv_filename = "database/words/vocab.csv"
     check_file_path_and_remove_duplicates(vocab_csv_filename)
-    grammar_csv_filename = "tasks/grammar/N1_grammar_practice.csv"
+    grammar_csv_filename = "database/grammar/N1_grammar_practice.csv"
     check_file_path_and_remove_duplicates(grammar_csv_filename)

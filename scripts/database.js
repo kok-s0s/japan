@@ -15,7 +15,7 @@ const parseCSV = (csvText) => {
 // 加载 CSV 数据
 const loadCSVData = async () => {
   try {
-    const response = await fetch('/tasks/words/vocab.csv');
+    const response = await fetch('/database/words/vocab.csv');
     const csvText = await response.text();
     japaneseWordsData = parseCSV(csvText);
     filteredData = japaneseWordsData; // 初始时不过滤
