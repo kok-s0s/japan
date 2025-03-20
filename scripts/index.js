@@ -42,7 +42,7 @@ const romajiText = document.getElementById('romaji');
 // 加载 CSV 数据
 const loadCSVData = async () => {
   try {
-    const response = await fetch('/database/words/vocab.csv');
+    const response = await fetch('/database/words/N1_words.csv');
     const csvText = await response.text();
     japaneseWordsData = parseCSV(csvText);
     console.log('单词数据：', japaneseWordsData);
@@ -102,7 +102,7 @@ const displayWord = (index) => {
 
   const word = japaneseWordsData[index];
   document.getElementById('kana').textContent = `假名: ${word.kana}`;
-  document.getElementById('japanese').textContent = `日语: ${word.japanese}`;
+  document.getElementById('japanese').textContent = `${word.japanese}`;
   document.getElementById('chinese').textContent = `中文: ${word.chinese}`;
   romajiText.textContent = `罗马字: ${word.romaji}`;
   romajiText.style.display = 'block'; // 每次切换单词时确保罗马字可见

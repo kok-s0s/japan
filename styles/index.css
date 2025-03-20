@@ -123,15 +123,21 @@ a:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .card-content .row {
+  position: relative;
   display: flex;
   gap: 1rem;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 #speakButton {
+  position: absolute;
+  right: 0;
   padding: 0;
   width: 30px;
   height: 30px;
