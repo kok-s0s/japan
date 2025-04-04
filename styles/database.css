@@ -4,7 +4,6 @@
   gap: 1rem;
   align-items: center;
   width: 90%;
-  max-width: 600px;
   background-color: #1e1e1e;
   border-radius: 10px;
   padding: 16px;
@@ -24,12 +23,14 @@ th {
   padding: 12px;
   text-align: left;
   border-bottom: 2px solid #444;
+  text-align: center;
 }
 
 td {
   padding: 10px;
   border-bottom: 1px solid #444;
   color: #ddd;
+  text-align: center;
 }
 
 tr:hover {
@@ -63,4 +64,28 @@ input {
 button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+
+@media screen and (max-width: 420px) {
+  th {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  td {
+    font-size: 14px;
+    padding: 4px;
+  }
+
+  /* 隐藏不需要的列 */
+  th:nth-child(6), /* 英文 */
+  th:nth-child(7), /* 例句 */
+  th:nth-child(8), /* 中文释义 */
+  th:nth-child(9), /* 日语释义 */
+  td:nth-child(6),
+  td:nth-child(7),
+  td:nth-child(8),
+  td:nth-child(9) {
+    display: none;
+  }
 }

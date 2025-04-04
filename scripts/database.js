@@ -7,15 +7,24 @@ let filteredData = []; // 过滤后的数据
 const parseCSV = (csvText) => {
   const lines = csvText.trim().split('\n');
   return lines.slice(1).map((line) => {
-    const [kana, japanese, chinese, romaji] = line.split(',');
-    return { kana, japanese, chinese, romaji };
+    const columns = line.split(',');
+    return {
+      scene: columns[0], // 场景
+      romaji: columns[1], // 罗马字
+      kana: columns[2], // 假名
+      chinese: columns[3], // 中文
+      english: columns[4], // 英文
+      example: columns[5], // 例句
+      cn_meaning: columns[6], // 中文释义
+      jp_meaning: columns[7], // 日语释义
+    };
   });
 };
 
 // 加载 CSV 数据
 const loadCSVData = async () => {
   try {
-    const response = await fetch('/database/words/N1_words.csv');
+    const response = await fetch('/database/words/scene.csv');
     const csvText = await response.text();
     japaneseWordsData = parseCSV(csvText);
     filteredData = japaneseWordsData; // 初始时不过滤
@@ -33,13 +42,19 @@ const displayWords = () => {
   const startIndex = (currentPage - 1) * wordsPerPage;
   const pageData = filteredData.slice(startIndex, startIndex + wordsPerPage);
 
-  pageData.forEach((word) => {
+  pageData.forEach((word, index) => {
+    const rowNumber = startIndex + index + 1; // 计算全局序号
     const row = document.createElement('tr');
     row.innerHTML = `
-      <td>${word.japanese}</td>
+      <td>${rowNumber}</td>
+      <td>${word.scene}</td>
+      <td>${word.romaji}</td>
       <td>${word.kana}</td>
       <td>${word.chinese}</td>
-      <td>${word.romaji}</td>
+      <td>${word.english}</td>
+      <td>${word.example}</td>
+      <td>${word.cn_meaning}</td>
+      <td>${word.jp_meaning}</td>
     `;
     tableBody.appendChild(row);
   });
