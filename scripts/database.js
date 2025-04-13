@@ -93,10 +93,14 @@ document.getElementById('searchBox').addEventListener('input', (event) => {
   const keyword = event.target.value.trim().toLowerCase();
   filteredData = japaneseWordsData.filter(
     (word) =>
-      word.japanese.includes(keyword) ||
+      word.scene.toLowerCase().includes(keyword) ||
+      word.romaji.toLowerCase().includes(keyword) ||
       word.kana.includes(keyword) ||
       word.chinese.includes(keyword) ||
-      word.romaji.includes(keyword)
+      word.english.toLowerCase().includes(keyword) ||
+      word.example.toLowerCase().includes(keyword) ||
+      word.cn_meaning.includes(keyword) ||
+      word.jp_meaning.includes(keyword)
   );
   currentPage = 1;
   displayWords();
