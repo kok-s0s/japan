@@ -42,7 +42,7 @@ const romajiText = document.getElementById('romaji');
 // 加载 CSV 数据
 const loadCSVData = async () => {
   try {
-    const response = await fetch('/database/words/N1_words.csv');
+    const response = await fetch('/database/words/scene.csv');
     const csvText = await response.text();
     japaneseWordsData = parseCSV(csvText);
     console.log('单词数据：', japaneseWordsData);
@@ -62,8 +62,18 @@ const loadCSVData = async () => {
 const parseCSV = (csvText) => {
   const lines = csvText.trim().split('\n');
   return lines.slice(1).map((line) => {
-    const [kana, japanese, chinese, romaji] = line.split(',');
-    return { kana, japanese, chinese, romaji };
+    const columns = line.split(',');
+    return {
+      scene: columns[0], // 场景
+      romaji: columns[1], // 罗马字
+      kana: columns[2], // 假名
+      chinese: columns[3], // 中文
+      english: columns[4], // 英文
+      example: columns[5], // 例句
+      cn_meaning: columns[6], // 中文释义
+      jp_meaning: columns[7], // 日语释义,
+      kanji: columns[8], // 汉字
+    };
   });
 };
 
@@ -73,7 +83,7 @@ const speakButton = document.getElementById('speakButton');
 // 点击发音按钮时发音当前单词
 speakButton.addEventListener('click', () => {
   const word = japaneseWordsData[currentIndex];
-  speakWord(word.japanese); // 发音日语单词
+  speakWord(word.kana); // 发音日语单词
 });
 
 // 按下空格键时发音当前单词
@@ -81,7 +91,7 @@ document.addEventListener('keydown', (event) => {
   if (event.code === 'Space') {
     event.preventDefault(); // 防止页面滚动
     const word = japaneseWordsData[currentIndex];
-    speakWord(word.japanese);
+    speakWord(word.kana);
   }
 });
 
@@ -102,7 +112,7 @@ const displayWord = (index) => {
 
   const word = japaneseWordsData[index];
   document.getElementById('kana').textContent = `假名: ${word.kana}`;
-  document.getElementById('japanese').textContent = `${word.japanese}`;
+  document.getElementById('kanji').textContent = `${word.kanji}`;
   document.getElementById('chinese').textContent = `中文: ${word.chinese}`;
   romajiText.textContent = `罗马字: ${word.romaji}`;
   romajiText.style.display = 'block'; // 每次切换单词时确保罗马字可见
@@ -145,14 +155,14 @@ checkButton.addEventListener('click', async () => {
   const userInput = inputField.value.trim();
   const userId = auth.currentUser ? auth.currentUser.uid : 'guest';
 
-  let isCorrect = userInput === word.japanese || userInput === word.kana;
+  let isCorrect = userInput === word.kanji || userInput === word.kana;
 
   // **显示弹窗**
   Swal.fire({
     title: isCorrect ? '正确！🎉' : '错误！❌',
     text: isCorrect
       ? '回答正确，继续下一个单词！'
-      : `正确答案是：${word.japanese} (${word.kana})`,
+      : `正确答案是：${word.kanji} (${word.kana})`,
     icon: isCorrect ? 'success' : 'error',
     confirmButtonText: '确定',
   }).then(() => {
@@ -166,7 +176,7 @@ checkButton.addEventListener('click', async () => {
   });
 
   // **更新 Firestore 词语统计**
-  await updateWordStats(userId, word.japanese, isCorrect);
+  await updateWordStats(userId, word.kanji, isCorrect);
 });
 
 // **更新 Firestore 统计数据**
