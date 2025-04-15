@@ -14,7 +14,7 @@ const loadCSVData = async () => {
     japaneseWordsData = parseCSV(csvText);
     console.log('单词数据：', japaneseWordsData);
 
-    displayWord(0);
+    loadUserProgress();
   } catch (error) {
     console.error('加载 CSV 失败:', error);
   }
@@ -137,11 +137,13 @@ document.getElementById('prevButton').addEventListener('click', () => {
   currentIndex =
     (currentIndex - 1 + japaneseWordsData.length) % japaneseWordsData.length;
   displayWord(currentIndex);
+  saveUserProgress(currentIndex);
 });
 
 document.getElementById('nextButton').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % japaneseWordsData.length;
   displayWord(currentIndex);
+  saveUserProgress(currentIndex);
 });
 
 document.addEventListener('keydown', (event) => {
@@ -153,6 +155,24 @@ document.addEventListener('keydown', (event) => {
     document.getElementById('nextButton').click();
   }
 });
+
+// 存储用户进度
+const saveUserProgress = (index) => {
+  // 将当前单词索引保存在 localStorage 中
+  localStorage.setItem('lastWordIndex', index);
+};
+
+// 读取用户进度
+const loadUserProgress = () => {
+  // 从 localStorage 获取存储的进度（即最后的单词索引）
+  const savedIndex = localStorage.getItem('lastWordIndex');
+  if (savedIndex !== null) {
+    currentIndex = parseInt(savedIndex, 10); // 确保是整数
+  } else {
+    currentIndex = 0; // 如果没有存储过进度，从第一个单词开始
+  }
+  displayWord(currentIndex);
+};
 
 // 查看数据库按钮
 document.getElementById('viewDatabaseBtn').addEventListener('click', () => {
