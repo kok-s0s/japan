@@ -76,6 +76,7 @@ const displayWord = (index) => {
   document.getElementById('kana').textContent = `假名: ${word.kana}`;
   document.getElementById('kanji').textContent = `${word.kanji}`;
   document.getElementById('chinese').textContent = `中文: ${word.chinese}`;
+  document.getElementById('english').textContent = `英文: ${word.english}`;
   romajiText.textContent = `罗马字: ${word.romaji}`;
   romajiText.style.display = 'block'; // 每次切换单词时确保罗马字可见
 
