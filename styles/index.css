@@ -156,21 +156,23 @@ a:active {
   background-color: #6a4c9c;
 }
 
-#japanese {
-  font-size: 28px;
-  color: #fff;
-}
-
 #kana {
   font-size: 20px;
   font-weight: bold;
   color: #aaa;
 }
 
+#kanji,
 #chinese,
+#english,
 #romaji {
   font-size: 16px;
   color: #ddd;
+}
+
+#romaji-container {
+  border-radius: 4px;
+  width: 80%;
 }
 
 .training {
@@ -258,12 +260,10 @@ a:active {
     gap: 0.5rem;
   }
 
-  #japanese {
-    font-size: 22px;
-  }
-
+  #kanji,
   #kana,
   #chinese,
+  #english,
   #romaji {
     font-size: 16px;
   }

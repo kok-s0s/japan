@@ -2,10 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>日语打字练习</title>
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/index.css" />
@@ -19,6 +16,7 @@
     <div class="container">
       <div class="card">
         <button
+          type="button"
           id="prevButton"
           class="nav-button left"
           aria-label="prev"
@@ -27,15 +25,16 @@
         <div class="card-content">
           <div class="row">
             <div id="kanji"></div>
-            <button id="speakButton">🎧</button>
+            <button type="button" id="speakButton">🎧</button>
           </div>
           <div class="row"><div id="kana"></div></div>
           <div class="row"><div id="chinese"></div></div>
-          <div class="row"><div id="romaji"></div></div>
           <div class="row"><div id="english"></div></div>
+          <div class="row" id="romaji-container"><div id="romaji"></div></div>
         </div>
 
         <button
+          type="button"
           id="nextButton"
           class="nav-button right"
           aria-label="next"
@@ -49,7 +48,7 @@
           placeholder="请输入假名"
           autocomplete="off"
         />
-        <button id="checkButton">检查</button>
+        <button type="button" id="checkButton">检查</button>
       </div>
 
       <div class="jlpt">
@@ -57,7 +56,9 @@
         <div id="countdown" class="countdown-display">计算中...</div>
       </div>
 
-      <button id="viewDatabaseBtn" class="purple-btn">查看词库</button>
+      <button type="button" id="viewDatabaseBtn" class="purple-btn">
+        查看词库
+      </button>
     </div>
   </body>
 </html>

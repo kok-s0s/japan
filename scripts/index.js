@@ -4,6 +4,7 @@ let currentIndex = 0;
 // 获取 HTML 元素
 const inputField = document.getElementById('input');
 const checkButton = document.getElementById('checkButton');
+const romajiContainer = document.getElementById('romaji-container');
 const romajiText = document.getElementById('romaji');
 
 // 加载 CSV 数据
@@ -87,17 +88,20 @@ const displayWord = (index) => {
 
 // 输入框聚焦时隐藏罗马字
 inputField.addEventListener('focus', () => {
-  romajiText.style.display = 'none';
+  romajiContainer.style.backgroundColor = '#5e4b8b'; // 输入框背景颜色
+  romajiText.style.color = 'transparent'; // 隐藏罗马字
 });
 
 // 用户输入时也隐藏罗马字
 inputField.addEventListener('input', () => {
-  romajiText.style.display = 'none';
+  romajiContainer.style.backgroundColor = '#5e4b8b'; // 输入框背景颜色
+  romajiText.style.color = 'transparent'; // 隐藏罗马字
 });
 
 // 输入框失焦时显示罗马字
 inputField.addEventListener('blur', () => {
-  romajiText.style.display = 'block';
+  romajiContainer.style.backgroundColor = 'transparent'; // 输入框背景颜色
+  romajiText.style.color = '#ddd'; // 显示罗马字
 });
 
 // 监听输入框按键事件
