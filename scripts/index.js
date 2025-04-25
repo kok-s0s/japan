@@ -83,7 +83,7 @@ const displayWord = (index) => {
 
   inputField.value = '';
 
-  speakButton.style.display = 'inline-block'; // 确保按钮显示
+  speakButton.style.display = 'flex'; // 确保按钮显示
 };
 
 // 输入框聚焦时隐藏罗马字

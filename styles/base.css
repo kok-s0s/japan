@@ -3,7 +3,7 @@ body {
     'HarmonyOS Sans SC', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #121212;
+  background-color: #1e1e2f;
   color: #fff;
   width: 100%;
   display: flex;
@@ -12,24 +12,30 @@ body {
   height: 100%;
 }
 
+button {
+  font-family: 'Microsoft YaHei', 'Noto Sans SC', 'Segoe UI', 'PingFang SC',
+    'HarmonyOS Sans SC', sans-serif;
+}
+
 .purple-btn {
-  background-color: #6a5acd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8a66d3;
   color: white;
   min-width: 80px;
   padding: 6px 8px;
   border: none;
   cursor: pointer;
   border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  letter-spacing: 1.4px;
 }
 
 .purple-btn:hover {
-  background-color: #836fff;
-}
-
-@media screen and (max-width: 420px) {
-  .purple-btn {
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-  }
+  background-color: #00bcd4;
 }
