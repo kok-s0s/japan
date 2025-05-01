@@ -20,17 +20,23 @@ table {
 th {
   background-color: #333;
   color: #fff;
-  padding: 12px;
+  padding: 8px;
   text-align: left;
   border-bottom: 2px solid #444;
   text-align: center;
+  white-space: nowrap;
 }
 
 td {
-  padding: 10px;
+  padding: 8px;
   border-bottom: 1px solid #444;
   color: #ddd;
   text-align: center;
+  font-size: 15px;
+}
+
+td:nth-child(2) {
+  min-width: 100px;
 }
 
 tr:hover {
