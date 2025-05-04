@@ -113,3 +113,16 @@ document.getElementById('backHomePageBtn').addEventListener('click', () => {
 
 // 加载 CSV
 loadCSVData();
+
+document.getElementById('jumpPageBtn').addEventListener('click', () => {
+  const input = document.getElementById('jumpPageInput');
+  const page = parseInt(input.value, 10);
+  const totalPages = Math.ceil(filteredData.length / wordsPerPage);
+
+  if (!isNaN(page) && page >= 1 && page <= totalPages) {
+    currentPage = page;
+    displayWords();
+  } else {
+    alert(`请输入 1 到 ${totalPages} 之间的页码`);
+  }
+});
