@@ -1,4 +1,4 @@
-const wordsPerPage = 8; // 每页显示 8 个单词
+const wordsPerPage = 10; // 每页显示 10 个单词
 let japaneseWordsData = []; // 存储单词数据
 let currentPage = 1;
 let filteredData = []; // 过滤后的数据
@@ -106,14 +106,6 @@ document.getElementById('searchBox').addEventListener('input', (event) => {
   displayWords();
 });
 
-// 返回主页按钮
-document.getElementById('backHomePageBtn').addEventListener('click', () => {
-  window.location.href = 'index.html';
-});
-
-// 加载 CSV
-loadCSVData();
-
 document.getElementById('jumpPageBtn').addEventListener('click', () => {
   const input = document.getElementById('jumpPageInput');
   const page = parseInt(input.value, 10);
@@ -122,7 +114,16 @@ document.getElementById('jumpPageBtn').addEventListener('click', () => {
   if (!isNaN(page) && page >= 1 && page <= totalPages) {
     currentPage = page;
     displayWords();
+    input.value = '';
   } else {
     alert(`请输入 1 到 ${totalPages} 之间的页码`);
   }
 });
+
+// 返回主页按钮
+document.getElementById('backHomePageBtn').addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
+
+// 加载 CSV
+loadCSVData();
