@@ -12,11 +12,12 @@ const parseCSV = (csvText) => {
       scene: columns[0], // 场景
       romaji: columns[1], // 罗马字
       kana: columns[2], // 假名
-      chinese: columns[3], // 中文
-      english: columns[4], // 英文
-      example: columns[5], // 例句
-      cn_meaning: columns[6], // 中文释义
-      jp_meaning: columns[7], // 日语释义
+      kanji: columns[3], // 汉字
+      chinese: columns[4], // 中文
+      english: columns[5], // 英文
+      example: columns[6], // 例句
+      cn_meaning: columns[7], // 中文释义
+      jp_meaning: columns[8], // 日语释义
     };
   });
 };
@@ -50,17 +51,56 @@ const displayWords = () => {
       <td>${word.scene}</td>
       <td>${word.romaji}</td>
       <td>${word.kana}</td>
+      <td>${word.kanji}</td>
       <td>${word.chinese}</td>
       <td>${word.english}</td>
-      <td>${word.example}</td>
-      <td>${word.cn_meaning}</td>
-      <td>${word.jp_meaning}</td>
     `;
     tableBody.appendChild(row);
   });
 
   updatePaginationInfo();
 };
+
+// 根据假名查找单词
+const findWordByKana = (kana) => {
+  return japaneseWordsData.find((word) => word.kana === kana);
+};
+
+const table = document.getElementById('table');
+const tooltip = document.getElementById('tooltip');
+let timer;
+
+table.addEventListener('mouseover', (e) => {
+  const row = e.target.closest('tr');
+  if (!row) return;
+
+  timer = setTimeout(() => {
+    const tds = row.querySelectorAll('td');
+    const kana = tds[3].textContent;
+    const detail = findWordByKana(kana);
+
+    tooltip.innerHTML = `
+      <div style="padding: 8px; max-width: 300px;">
+        <div><strong>例句：</strong><br>${detail.example}</div>
+        <div style="margin-top: 6px;"><strong>中文释义：</strong><br>${detail.cn_meaning}</div>
+        <div style="margin-top: 6px;"><strong>日文释义：</strong><br>${detail.jp_meaning}</div>
+      </div>
+    `;
+    tooltip.style.display = 'block';
+    tooltip.style.left = e.pageX + 10 + 'px';
+    tooltip.style.top = e.pageY + 10 + 'px';
+  }, 800); // 800ms 延迟
+});
+
+table.addEventListener('mousemove', (e) => {
+  tooltip.style.left = e.pageX + 10 + 'px';
+  tooltip.style.top = e.pageY + 10 + 'px';
+});
+
+table.addEventListener('mouseout', () => {
+  clearTimeout(timer);
+  tooltip.style.display = 'none';
+});
 
 // 更新翻页信息
 const updatePaginationInfo = () => {

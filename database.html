@@ -12,24 +12,35 @@
     <div class="container">
       <input type="text" id="searchBox" placeholder="🔍 搜索单词..." />
 
-      <table>
+      <table id="table">
         <thead>
           <tr>
             <th>序号</th>
             <th>场景</th>
             <th>罗马字</th>
             <th>假名</th>
+            <th>汉字</th>
             <th>中文</th>
             <th>英文</th>
-            <th>例句</th>
-            <th>中文释义</th>
-            <th>日语释义</th>
           </tr>
         </thead>
         <tbody id="wordsTable">
           <!-- 这里填充数据 -->
         </tbody>
       </table>
+
+      <div
+        id="tooltip"
+        style="
+          display: none;
+          position: absolute;
+          background: #333;
+          color: #fff;
+          padding: 5px;
+          border-radius: 5px;
+          z-index: 1000;
+        "
+      ></div>
 
       <div class="pagination">
         <button id="prevPage">⬅️ 上一页</button>
