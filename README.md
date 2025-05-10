@@ -21,7 +21,7 @@
 - [ ] 数据库的完善
   - [ ] N1 词汇
   - [ ] N2 词汇
-  - [ ] [场景词汇](./First%20Thousands%20Words%20in%20Japanese.pdf)
+  - [x] [场景词汇](./First%20Thousands%20Words%20in%20Japanese.pdf)
   - [x] 表格调整，隐藏部分信息，改为鼠标停留显示隐藏信息 - tooltip
 - [ ] 日语常用语法记录
   - [ ] 填空练习
