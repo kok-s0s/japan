@@ -1,41 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #16161a;
+  color: #fffffe;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
 body {
-  font-family: 'Microsoft YaHei', 'Noto Sans SC', 'Segoe UI', 'PingFang SC',
-    'HarmonyOS Sans SC', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #1e1e2f;
-  color: #fff;
+  margin: 0 auto;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  max-width: 100ch;
+  padding: 0.4rem;
+  line-height: 1.5;
 }
 
-button {
-  font-family: 'Microsoft YaHei', 'Noto Sans SC', 'Segoe UI', 'PingFang SC',
-    'HarmonyOS Sans SC', sans-serif;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-.purple-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+a {
+  text-decoration: none;
+}
+
+a {
+  padding: 0.5rem 1rem;
   background-color: #8a66d3;
-  color: white;
-  min-width: 80px;
-  padding: 6px 8px;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: bold;
-  height: 34px;
-  line-height: 34px;
-  text-align: center;
-  letter-spacing: 1.4px;
+  border-radius: 7px;
 }
 
-.purple-btn:hover {
-  background-color: #00bcd4;
+a:link,
+a:visited {
+  color: #fffffe;
+}
+
+a:hover,
+a:active {
+  color: #2ccaea !important;
 }

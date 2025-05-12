@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  width: 80%;
+  width: 100%;
   background-color: #1e1e1e;
   border-radius: 10px;
   padding: 16px;
@@ -70,7 +70,7 @@ tr:hover {
 }
 
 #jumpPageInput {
-  width: 44px;
+  width: 50px;
   padding: 6px 10px;
   background-color: #1e1e1e;
   color: #ffffff;
@@ -78,7 +78,6 @@ tr:hover {
   border-radius: 6px;
   font-size: 14px;
   outline: none;
-  -moz-appearance: textfield;
 }
 
 #jumpPageInput::-webkit-outer-spin-button,
@@ -100,28 +99,4 @@ tr:hover {
 button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
-}
-
-@media screen and (max-width: 420px) {
-  th {
-    font-size: 14px;
-    padding: 6px;
-  }
-
-  td {
-    font-size: 14px;
-    padding: 4px;
-  }
-
-  /* 隐藏不需要的列 */
-  th:nth-child(6), /* 英文 */
-  th:nth-child(7), /* 例句 */
-  th:nth-child(8), /* 中文释义 */
-  th:nth-child(9), /* 日语释义 */
-  td:nth-child(6),
-  td:nth-child(7),
-  td:nth-child(8),
-  td:nth-child(9) {
-    display: none;
-  }
 }

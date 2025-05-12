@@ -58,15 +58,17 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-// 发音功能函数
 const speakWord = (word) => {
+  window.speechSynthesis.cancel(); // 先清空之前的语音
   const utterance = new SpeechSynthesisUtterance(word);
   utterance.lang = 'ja-JP'; // 设置为日语
-  utterance.rate = 0.5; // 语速
+  utterance.rate = 0.4; // 语速
   utterance.pitch = 0.8; // 音调
 
-  // 调用浏览器的语音合成功能
-  window.speechSynthesis.speak(utterance);
+  // 等待语音合成引擎准备就绪再说
+  setTimeout(() => {
+    window.speechSynthesis.speak(utterance);
+  }, 200); // 延时 200ms，有助于解决吞音问题
 };
 
 // 显示单词时，确保发音按钮可见
@@ -178,11 +180,6 @@ const loadUserProgress = () => {
   }
   displayWord(currentIndex);
 };
-
-// 查看数据库按钮
-document.getElementById('viewDatabaseBtn').addEventListener('click', () => {
-  window.location.href = 'database.html';
-});
 
 // 加载 CSV 数据
 loadCSVData();

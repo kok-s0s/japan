@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width" />
     <title>日语单词数据库</title>
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/database.css" />
@@ -16,7 +16,6 @@
         <thead>
           <tr>
             <th>序号</th>
-            <th>场景</th>
             <th>罗马字</th>
             <th>假名</th>
             <th>汉字</th>
@@ -47,10 +46,10 @@
         <span id="pageInfo">第 1 页</span>
         <button id="nextPage">➡️ 下一页</button>
         <input type="number" id="jumpPageInput" min="1" placeholder="页码" />
-        <button id="jumpPageBtn">🍣 跳转</button>
+        <button id="jumpPageBtn">跳转</button>
       </div>
 
-      <button id="backHomePageBtn" class="purple-btn">返回主页</button>
+      <a href="/index.html">主页</a>
     </div>
   </body>
 </html>

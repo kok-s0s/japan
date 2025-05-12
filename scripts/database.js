@@ -48,7 +48,6 @@ const displayWords = () => {
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${rowNumber}</td>
-      <td>${word.scene}</td>
       <td>${word.romaji}</td>
       <td>${word.kana}</td>
       <td>${word.kanji}</td>
@@ -76,12 +75,13 @@ table.addEventListener('mouseover', (e) => {
 
   timer = setTimeout(() => {
     const tds = row.querySelectorAll('td');
-    const kana = tds[3].textContent;
+    const kana = tds[2].textContent;
     const detail = findWordByKana(kana);
 
     tooltip.innerHTML = `
       <div style="padding: 8px; max-width: 300px;">
-        <div><strong>例句：</strong><br>${detail.example}</div>
+        <div><strong>场景：</strong><br>${detail.scene}</div>
+        <div style="margin-top: 6px;"><strong>例句：</strong><br>${detail.example}</div>
         <div style="margin-top: 6px;"><strong>中文释义：</strong><br>${detail.cn_meaning}</div>
         <div style="margin-top: 6px;"><strong>日文释义：</strong><br>${detail.jp_meaning}</div>
       </div>
@@ -158,11 +158,6 @@ document.getElementById('jumpPageBtn').addEventListener('click', () => {
   } else {
     alert(`请输入 1 到 ${totalPages} 之间的页码`);
   }
-});
-
-// 返回主页按钮
-document.getElementById('backHomePageBtn').addEventListener('click', () => {
-  window.location.href = 'index.html';
 });
 
 // 加载 CSV
