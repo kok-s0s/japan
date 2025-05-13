@@ -30,12 +30,12 @@ const parseCSV = (csvText) => {
       scene: columns[0], // 场景
       romaji: columns[1], // 罗马字
       kana: columns[2], // 假名
-      chinese: columns[3], // 中文
-      english: columns[4], // 英文
-      example: columns[5], // 例句
-      cn_meaning: columns[6], // 中文释义
-      jp_meaning: columns[7], // 日语释义,
-      kanji: columns[8], // 汉字
+      kanji: columns[3], // 汉字
+      chinese: columns[4], // 中文
+      english: columns[5], // 英文
+      example: columns[6], // 例句
+      cn_meaning: columns[7], // 中文释义
+      jp_meaning: columns[8], // 日语释义
     };
   });
 };
