@@ -8,16 +8,23 @@ const romajiContainer = document.getElementById('romaji-container');
 const romajiText = document.getElementById('romaji');
 
 // 加载 CSV 数据
-const loadCSVData = async () => {
+const loadMultipleCSV = async (fileList) => {
   try {
-    const response = await fetch('/database/words/scene.csv');
-    const csvText = await response.text();
-    japaneseWordsData = parseCSV(csvText);
-    console.log('单词数据：', japaneseWordsData);
+    // 并发加载所有 CSV
+    const fetchPromises = fileList.map((file) =>
+      fetch(`/database/words/${file}`).then((res) => res.text())
+    );
 
-    loadUserProgress();
+    const contents = await Promise.all(fetchPromises);
+
+    // 合并解析后的数据
+    japaneseWordsData = contents.flatMap(parseCSV);
+
+    console.log('所有场景的单词数据：', japaneseWordsData);
+
+    loadUserProgress(); // 接着加载用户进度
   } catch (error) {
-    console.error('加载 CSV 失败:', error);
+    console.error('加载多个 CSV 失败:', error);
   }
 };
 
@@ -182,4 +189,5 @@ const loadUserProgress = () => {
 };
 
 // 加载 CSV 数据
-loadCSVData();
+const csvFiles = ['scene.csv', 'N1_words.csv'];
+loadMultipleCSV(csvFiles);

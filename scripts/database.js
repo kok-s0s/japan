@@ -23,15 +23,23 @@ const parseCSV = (csvText) => {
 };
 
 // 加载 CSV 数据
-const loadCSVData = async () => {
+const loadMultipleCSV = async (fileList) => {
   try {
-    const response = await fetch('/database/words/scene.csv');
-    const csvText = await response.text();
-    japaneseWordsData = parseCSV(csvText);
+    // 并发加载所有 CSV
+    const fetchPromises = fileList.map((file) =>
+      fetch(`/database/words/${file}`).then((res) => res.text())
+    );
+
+    const contents = await Promise.all(fetchPromises);
+
+    // 合并解析后的数据
+    japaneseWordsData = contents.flatMap(parseCSV);
+
     filteredData = japaneseWordsData; // 初始时不过滤
+
     displayWords();
   } catch (error) {
-    console.error('加载 CSV 失败:', error);
+    console.error('加载多个 CSV 失败:', error);
   }
 };
 
@@ -147,6 +155,17 @@ document.getElementById('searchBox').addEventListener('input', (event) => {
   displayWords();
 });
 
+const jumpPageInputField = document.getElementById('jumpPageInput');
+const jumpPageButton = document.getElementById('jumpPageBtn');
+
+// 监听页码输入框按键事件
+jumpPageInputField.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 防止回车触发默认行为（如表单提交）
+    jumpPageButton.click(); // 触发检查按钮点击
+  }
+});
+
 document.getElementById('jumpPageBtn').addEventListener('click', () => {
   const input = document.getElementById('jumpPageInput');
   const page = parseInt(input.value, 10);
@@ -161,5 +180,6 @@ document.getElementById('jumpPageBtn').addEventListener('click', () => {
   }
 });
 
-// 加载 CSV
-loadCSVData();
+// 加载 CSV 数据
+const csvFiles = ['scene.csv', 'N1_words.csv'];
+loadMultipleCSV(csvFiles);
