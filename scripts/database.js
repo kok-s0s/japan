@@ -9,15 +9,15 @@ const parseCSV = (csvText) => {
   return lines.slice(1).map((line) => {
     const columns = line.split(',');
     return {
-      scene: columns[0], // 场景
-      romaji: columns[1], // 罗马字
-      kana: columns[2], // 假名
-      kanji: columns[3], // 汉字
-      chinese: columns[4], // 中文
-      english: columns[5], // 英文
-      example: columns[6], // 例句
-      cn_meaning: columns[7], // 中文释义
-      jp_meaning: columns[8], // 日语释义
+      romaji: columns[0], // 罗马字
+      kana: columns[1], // 假名
+      kanji: columns[2], // 汉字
+      chinese: columns[3], // 中文
+      english: columns[4], // 英文
+      example: columns[5], // 例句
+      cn_meaning: columns[6], // 中文释义
+      jp_meaning: columns[7], // 日语释义
+      scene: columns[8], // 场景
     };
   });
 };
@@ -76,6 +76,7 @@ table.addEventListener('mouseover', (e) => {
   timer = setTimeout(() => {
     const tds = row.querySelectorAll('td');
     const kana = tds[2].textContent;
+    console.log(kana);
     const detail = findWordByKana(kana);
 
     tooltip.innerHTML = `
