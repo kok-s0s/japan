@@ -29,5 +29,6 @@
 
 ## 🍙 Plan
 
-- **MOJiTest** - 一周一个真题训练 + 查漏补缺（五月）
+- **MOJiTest** - ~~一周一个真题训练 + 查漏补缺（五月）~~
 - **阅读听力** - 看动漫看影视剧（时刻保持）
+- **[日语语法指南](https://res.wokanxing.info/jpgramma/index.html)**
