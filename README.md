@@ -32,3 +32,13 @@
 - **MOJiTest** - ~~一周一个真题训练 + 查漏补缺（五月）~~
 - **阅读听力** - 看动漫看影视剧（时刻保持）
 - **[日语语法指南](https://res.wokanxing.info/jpgramma/index.html)**
+
+## 🔗 Link
+
+- [NHK Easy](https://www3.nhk.or.jp/news/easy/)
+
+## 💽 DataBase
+
+- [与 ChatGPT 对话产物 - 根据可能出现的情景](./database/simple.csv) - 简单词汇
+- [书籍《First Thousands Words in Japanese》学习记录的词汇](./database/words/scene.csv) - 场景词汇
+- [N1 词汇 - MOJiTest 软件数据](./database/words/N1_words.csv) - N1 词汇

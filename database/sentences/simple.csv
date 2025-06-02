@@ -1,0 +1,60 @@
+分类,中文,日语,罗马字
+购物-通用,这个多少钱？,これはいくらですか？,Kore wa ikura desu ka?
+购物-通用,太贵了,高すぎます,Taka sugimasu
+购物-通用,有别的颜色吗？,他の色はありますか？,Hoka no iro wa arimasu ka?
+购物-通用,我可以试穿吗？,試着できますか？,Shichaku dekimasu ka?
+购物-通用,有没有大一点的尺码？,もっと大きいサイズはありますか？,Motto ookii saizu wa arimasu ka?
+购物-通用,我要这个,これをください,Kore o kudasai
+购物-通用,不需要购物袋,袋はいりません,Fukuro wa irimasen
+购物-通用,有免税吗？,免税できますか？,Menzei dekimasu ka?
+购物-模型,高达模型,ガンプラ,Ganpura
+购物-模型,手办,フィギュア,Figyua
+购物-模型,限定版,限定版（げんていばん）,Genteiban
+购物-模型,新品,新商品（しんしょうひん）,Shinshouhin
+购物-模型,二手商品,中古（ちゅうこ）,Chuuko
+购物-模型,缺货/售罄,売り切れ（うりきれ）,Urikire
+购物-模型,发售日,発売日（はつばいび）,Hatsubaibi
+购物-模型,店铺特典,店舗特典（てんぽとくてん）,Tenpo tokuten
+观光-通用,厕所在哪里？,トイレはどこですか？,Toire wa doko desu ka?
+观光-通用,XX 怎么去？,XX へはどうやって行きますか？,XX e wa douyatte ikimasu ka?
+观光-通用,有中文导览吗？,中国語の案内はありますか？,Chuugokugo no annai wa arimasu ka?
+观光-通用,可以拍照吗？,写真を撮ってもいいですか？,Shashin o totte mo ii desu ka?
+观光-地点,车站,駅（えき）,Eki
+观光-地点,机场,空港（くうこう）,Kuukou
+观光-地点,观光景点,観光地（かんこうち）,Kankouchi
+观光-地点,百货公司,デパート,Depaato
+观光-地点,商场,モール,Mooru
+观光-地点,药妆店,ドラッグストア,Doraggu sutoa
+付款-结账,可以刷卡吗？,カード使えますか？,Kaado tsukaemasu ka?
+付款-结账,用现金可以吗？,現金でもいいですか？,Genkin demo ii desu ka?
+付款-结账,可以用支付宝/微信吗？,アリペイ/ウィーチャットペイ使えますか？,Aripei / Wiichatto pei tsukaemasu ka?
+基本表达,请给我这个,これをください,Kore o kudasai
+基本表达,我要一份这个,これを一つお願いします,Kore o hitotsu onegaishimasu
+基本表达,推荐是什么？,おすすめは何ですか？,Osusume wa nan desu ka?
+基本表达,有中文菜单吗？,中国語のメニューはありますか？,Chuugokugo no menyuu wa arimasu ka?
+基本表达,我要点餐,注文をお願いします,Chuumon o onegaishimasu
+基本表达,这个是什么？,これは何ですか？,Kore wa nan desu ka?
+基本表达,可以不要 XX 吗？,XX抜きでお願いします,XX nuki de onegaishimasu
+基本表达,有素食吗？,ベジタリアン料理はありますか？,Bejitarian ryouri wa arimasu ka?
+基本表达,不要辣,辛くしないでください,Karaku shinaide kudasai
+基本表达,请给我水,お水をください,Omizu o kudasai
+基本表达,结账,お会計をお願いします,Okaikei o onegaishimasu
+基本表达,我过敏（XX 过敏）,XXアレルギーです,XX arerugii desu
+数量词,一份,一つ（ひとつ）,Hitotsu
+数量词,两份,二つ（ふたつ）,Futatsu
+数量词,三份,三つ（みっつ）,Mittsu
+数量词,一杯,一杯（いっぱい）,Ippai
+数量词,两杯,二杯（にはい）,Nihai
+食物,拉面,ラーメン,Raamen
+食物,寿司,寿司（すし）,Sushi
+食物,乌冬面,うどん,Udon
+食物,炸猪排,とんかつ,Tonkatsu
+食物,咖喱饭,カレーライス,Karee raisu
+食物,盖饭,丼（どんぶり）,Donburi
+食物,烧鸟串,焼き鳥（やきとり）,Yakitori
+食物,生鱼片,刺身（さしみ）,Sashimi
+饮料,水,水（みず）,Mizu
+饮料,茶,お茶（おちゃ）,Ocha
+饮料,啤酒,ビール,Biiru
+饮料,可乐,コーラ,Koora
+饮料,果汁,ジュース,Juusu
