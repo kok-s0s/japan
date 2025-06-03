@@ -39,6 +39,6 @@
 
 ## 💽 DataBase
 
-- [与 ChatGPT 对话产物 - 根据可能出现的情景](./database/simple.csv) - 简单词汇
+- [与 ChatGPT 对话产物 - 根据可能出现的情景](./database/sentences/simple.csv) - 简单语句
 - [书籍《First Thousands Words in Japanese》学习记录的词汇](./database/words/scene.csv) - 场景词汇
 - [N1 词汇 - MOJiTest 软件数据](./database/words/N1_words.csv) - N1 词汇
