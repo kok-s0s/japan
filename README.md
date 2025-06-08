@@ -26,10 +26,11 @@
 - [ ] 日语常用语法记录
   - [ ] 填空练习
 - [ ] 个人真题演练错误记录
+- [ ] [日语语法指南](https://res.wokanxing.info/jpgramma/tendency.html)这个网站很棒！后续可以将其内容整合到本项目中。
 
 ## 🍙 Plan
 
-- **MOJiTest** - ~~一周一个真题训练 + 查漏补缺（五月）~~
+- **MOJiTest** - 手机软件查阅词汇
 - **阅读听力** - 看动漫看影视剧（时刻保持）
 - **[日语语法指南](https://res.wokanxing.info/jpgramma/index.html)**
 
