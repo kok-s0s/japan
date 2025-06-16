@@ -38,6 +38,9 @@
 
 - [NHK Easy](https://www3.nhk.or.jp/news/easy/)
 - [Tanos JLPT 词汇表](https://www.tanos.co.uk/jlpt/jlpt1/)
+- [IMABI 今日](https://imabi.org/)
+- [TAKOBOTO](https://takoboto.jp/bunpo/)
+- [青空文庫](https://www.aozora.gr.jp/)
 
 ## 💽 DataBase
 
