@@ -26,7 +26,9 @@
 - [ ] 日语常用语法记录
   - [ ] 填空练习
 - [ ] 个人真题演练错误记录
-- [ ] [日语语法指南](https://res.wokanxing.info/jpgramma/index.html)这个网站很棒！后续可以将其内容整合到本项目中。
+- [ ] [日语语法指南](https://res.wokanxing.info/jpgramma/index.html)这个网站很棒！后续可以将其内容整合到本项目中
+- [x] 日语手写输入练习
+  - [ ] 手写结果校验
 
 ## 🍙 Plan
 

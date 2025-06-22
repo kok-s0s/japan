@@ -191,3 +191,47 @@ const loadUserProgress = () => {
 // 加载 CSV 数据
 const csvFiles = ['scene.csv', 'N1_words.csv'];
 loadMultipleCSV(csvFiles);
+
+// 手写板逻辑
+const canvas = document.getElementById('handwritingCanvas');
+const ctx = canvas.getContext('2d');
+let drawing = false;
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  return {
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top,
+  };
+}
+
+canvas.addEventListener('pointerdown', (e) => {
+  drawing = true;
+  const { x, y } = getPos(e);
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+});
+
+canvas.addEventListener('pointermove', (e) => {
+  if (!drawing) return;
+  const { x, y } = getPos(e);
+  ctx.lineTo(x, y);
+  ctx.strokeStyle = 'black';
+  ctx.lineWidth = 2 * (e.pressure || 1); // 鼠标无压感默认 1
+  ctx.lineCap = 'round';
+  ctx.stroke();
+});
+
+canvas.addEventListener('pointerup', () => {
+  drawing = false;
+  ctx.closePath();
+});
+
+canvas.addEventListener('pointerleave', () => {
+  drawing = false;
+  ctx.closePath();
+});
+
+document.getElementById('clearCanvas').addEventListener('click', () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
