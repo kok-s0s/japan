@@ -303,6 +303,51 @@
   display: block;
 }
 
+.usage h2 {
+  color: #8a66d3;
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
+}
+
+.usage table {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  font-size: 16px;
+  color: #ccc;
+  text-align: left;
+}
+
+.usage thead th {
+  background-color: #3a3a5a;
+  color: #8a66d3;
+  padding: 12px 16px;
+  font-weight: 700;
+}
+
+.usage tbody tr {
+  background-color: #2e2e40;
+  transition: background-color 0.3s;
+}
+
+.usage tbody td {
+  padding: 12px 16px;
+  vertical-align: middle;
+}
+
+.usage tbody tr:hover {
+  background-color: #3c3c62;
+}
+
+.usage tbody td:first-child {
+  font-weight: 600;
+  color: #a88cff;
+  width: 35%;
+}
+
 /* 适配 iPhone 13（及其他移动端） */
 @media screen and (max-width: 420px) {
   .card {

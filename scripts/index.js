@@ -56,15 +56,6 @@ speakButton.addEventListener('click', () => {
   speakWord(word.kana); // 发音日语单词
 });
 
-// 按下空格键时发音当前单词
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'Space') {
-    event.preventDefault(); // 防止页面滚动
-    const word = japaneseWordsData[currentIndex];
-    speakWord(word.kana);
-  }
-});
-
 const speakWord = (word) => {
   window.speechSynthesis.cancel(); // 先清空之前的语音
   const utterance = new SpeechSynthesisUtterance(word);
@@ -158,16 +149,6 @@ document.getElementById('nextButton').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % japaneseWordsData.length;
   displayWord(currentIndex);
   saveUserProgress(currentIndex);
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'ArrowLeft') {
-    // 按下左方向键，切换到上一个单词
-    document.getElementById('prevButton').click();
-  } else if (event.key === 'ArrowRight') {
-    // 按下右方向键，切换到下一个单词
-    document.getElementById('nextButton').click();
-  }
 });
 
 // 存储用户进度
@@ -264,4 +245,49 @@ buttons.forEach((btn) => {
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
   });
+});
+
+function initKeyboardShortcuts() {
+  document.addEventListener('keydown', (event) => {
+    // 1. 空格发音
+    if (event.code === 'Space') {
+      event.preventDefault(); // 阻止页面滚动
+      if (window.japaneseWordsData && typeof currentIndex !== 'undefined') {
+        const word = japaneseWordsData[currentIndex];
+        if (word && word.kana) {
+          speakWord(word.kana);
+        }
+      }
+    }
+
+    // 2. Alt + I 聚焦输入框
+    if (event.altKey && event.key.toLowerCase() === 'i') {
+      event.preventDefault();
+      const input = document.getElementById('input');
+      if (input) input.focus();
+    }
+
+    // 3. Alt + J 跳转词库
+    if (event.altKey && event.key.toLowerCase() === 'j') {
+      event.preventDefault();
+      const link = document.querySelector('a[href="/database.html"]');
+      if (link) link.click();
+    }
+
+    // 4. ← 上一个单词
+    if (event.key === 'ArrowLeft') {
+      const prevBtn = document.getElementById('prevButton');
+      if (prevBtn) prevBtn.click();
+    }
+
+    // 5. → 下一个单词
+    if (event.key === 'ArrowRight') {
+      const nextBtn = document.getElementById('nextButton');
+      if (nextBtn) nextBtn.click();
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initKeyboardShortcuts();
 });
