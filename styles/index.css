@@ -1,4 +1,4 @@
-.container {
+.card-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -161,7 +161,6 @@
 }
 
 .handwriting-box {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,7 +169,7 @@
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  max-width: 540px;
+  /* max-width: 540px; */
   margin-left: auto;
   margin-right: auto;
 }
@@ -195,9 +194,10 @@
   background-color: #ffffff;
   touch-action: none;
   width: 100%;
-  max-width: 480px;
+  max-width: 640px;
   height: auto;
   aspect-ratio: 4 / 3;
+  display: block;
 }
 
 #clearCanvas {
@@ -233,7 +233,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
   padding: 1rem;
   background-color: #2e2e3a;
   border-radius: 10px;
@@ -264,6 +263,44 @@
 
 .link-list a:hover {
   text-decoration: underline;
+}
+
+/* Tabs 样式 */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  background-color: #2e2e3a;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #2e2e3a;
+  color: #ccc;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.tab-button.active {
+  background-color: #8a66d3;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+  width: 100%;
+  padding: 16px;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 /* 适配 iPhone 13（及其他移动端） */

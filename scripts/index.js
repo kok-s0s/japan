@@ -197,6 +197,24 @@ const canvas = document.getElementById('handwritingCanvas');
 const ctx = canvas.getContext('2d');
 let drawing = false;
 
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) {
+    // 延迟一点再设置，保证 DOM 有尺寸
+    requestAnimationFrame(resizeCanvas);
+    return;
+  }
+  const ratio = window.devicePixelRatio || 1;
+  canvas.width = rect.width * ratio;
+  canvas.height = rect.height * ratio;
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.scale(ratio, ratio);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  resizeCanvas(); // 确保DOM渲染后执行
+});
+
 function getPos(e) {
   const rect = canvas.getBoundingClientRect();
   return {
@@ -217,7 +235,7 @@ canvas.addEventListener('pointermove', (e) => {
   const { x, y } = getPos(e);
   ctx.lineTo(x, y);
   ctx.strokeStyle = 'black';
-  ctx.lineWidth = 2 * (e.pressure || 1); // 鼠标无压感默认 1
+  ctx.lineWidth = 2 * (e.pressure || 1);
   ctx.lineCap = 'round';
   ctx.stroke();
 });
@@ -234,4 +252,16 @@ canvas.addEventListener('pointerleave', () => {
 
 document.getElementById('clearCanvas').addEventListener('click', () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+// Tabs 切换逻辑
+const buttons = document.querySelectorAll('.tab-button');
+const contents = document.querySelectorAll('.tab-content');
+buttons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    buttons.forEach((b) => b.classList.remove('active'));
+    contents.forEach((c) => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
 });
