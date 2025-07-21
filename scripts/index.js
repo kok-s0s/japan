@@ -291,3 +291,21 @@ function initKeyboardShortcuts() {
 window.addEventListener('DOMContentLoaded', () => {
   initKeyboardShortcuts();
 });
+
+const links = document.querySelectorAll('.link-list .link-item');
+const iframe = document.getElementById('contentFrame');
+
+links.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // 去掉所有按钮的激活样式
+    links.forEach((l) => l.classList.remove('active'));
+    // 当前按钮加上激活样式
+    link.classList.add('active');
+
+    // 切换iframe地址
+    const url = link.getAttribute('data-url');
+    iframe.src = url;
+  });
+});

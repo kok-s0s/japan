@@ -248,21 +248,27 @@
 
 .link-list {
   display: flex;
+  gap: 10px;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  list-style: none;
-  padding-left: 0;
 }
 
 .link-list a {
-  color: #79e0ee;
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #7b68ee;
+  color: #b3b7ff;
   text-decoration: none;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.link-list a.active {
+  background-color: #5a47c5;
+  color: #ddd;
 }
 
 .link-list a:hover {
-  text-decoration: underline;
+  background-color: #6a57dd;
 }
 
 /* Tabs 样式 */
