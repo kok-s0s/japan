@@ -6,11 +6,12 @@
     <title>日语学习</title>
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/function/links.css" />
+    <script src="scripts/function/links.js"></script>
     <script type="module" src="scripts/index.js"></script>
-    <script type="module" src="scripts/countdown.js"></script>
     <!-- 引入 SweetAlert2 -->
-    <link rel="stylesheet" href="styles/sweetalert2.min.css" />
-    <script src="scripts/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="styles/function/sweetalert2.min.css" />
+    <script src="scripts/function/sweetalert2.all.min.js"></script>
   </head>
   <body>
     <div class="tabs">
@@ -76,11 +77,6 @@
           <button type="button" id="checkButton">检查</button>
         </div>
 
-        <!-- <div class="jlpt">
-        <div>距离 JLPT 考试时间</div>
-        <div id="countdown" class="countdown-display">计算中...</div>
-      </div> -->
-
         <a href="/database.html">词库</a>
       </div>
     </div>
@@ -98,61 +94,16 @@
     <div id="tab3" class="tab-content">
       <div class="link-box">
         <h3>推荐链接</h3>
-        <div class="link-list">
-          <a
-            href="https://res.wokanxing.info/jpgramma/index.html"
-            class="link-item active"
-            data-url="https://res.wokanxing.info/jpgramma/index.html"
-            href="javascript:void(0);"
-          >
-            日语语法指南
-          </a>
-          <a
-            href="javascript:void(0);"
-            class="link-item"
-            data-url="https://www3.nhk.or.jp/news/easy/"
-          >
-            NHK 日语学习
-          </a>
-          <a
-            href="javascript:void(0);"
-            class="link-item"
-            data-url="https://www.tanos.co.uk/jlpt/"
-          >
-            Tanos JLPT 词汇表
-          </a>
-          <a
-            href="javascript:void(0);"
-            class="link-item"
-            data-url="https://imabi.org/"
-          >
-            IMABI 今日
-          </a>
-          <a
-            href="javascript:void(0);"
-            class="link-item"
-            data-url="https://takoboto.jp/bunpo/"
-          >
-            TAKOBOTO
-          </a>
-          <a
-            href="javascript:void(0);"
-            class="link-item"
-            data-url="https://www.aozora.gr.jp/"
-          >
-            青空文库
-          </a>
-        </div>
+        <div class="link-list" id="linkList"></div>
       </div>
 
-      <!-- iframe区域，默认加载第一个链接 -->
       <div
         class="iframe-container"
         style="margin-top: 20px; height: 600px; border: 1px solid #ccc"
       >
         <iframe
           id="contentFrame"
-          src="https://res.wokanxing.info/jpgramma/index.html"
+          src=""
           style="width: 100%; height: 100%; border: none"
         ></iframe>
       </div>
